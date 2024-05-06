@@ -1,9 +1,9 @@
 name: "Todo-EKS IAC"
-on:
+'on':
   push:
     branches:
       - main
-      # - staging
+      - staging
     paths:
       - terraform/**
   pull_request:
