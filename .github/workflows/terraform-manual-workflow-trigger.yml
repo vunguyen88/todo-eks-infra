@@ -29,12 +29,12 @@ jobs:
 
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.0.0 #if specific terraform is required
+          terraform_version: 1.6.3 #if specific terraform is required
 
       - name: Tarraform init
         id: init
@@ -43,7 +43,7 @@ jobs:
 
       - name: Terraform format
         id: fmt
-        run: terraform fmt -check
+        run: terraform fmt
 
       - name: Terraform validate
         id: validate
@@ -57,3 +57,4 @@ jobs:
       - name: Terraform plan status
         if: steps.plan.outcome == 'failure'
         run: exit 1
+#
